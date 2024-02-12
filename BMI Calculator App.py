@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import tkinter
 from tkinter import messagebox
 
+#colors
 BMI_CATEGORIES = {
     'Underweight': '#F4D9AE',
     'Normal': '#2D8077',
@@ -10,6 +11,7 @@ BMI_CATEGORIES = {
     'Obesity': '#CD4F41'
 }
 
+#icons
 IMAGE_PATHS = {
     'Obesity': '/Users/antruong/Downloads/warning.png',
     'Overweight': '/Users/antruong/Downloads/warning-2.png',
@@ -27,6 +29,7 @@ def bmi_calculation(h,w):
         return 'Normal', IMAGE_PATHS['Normal']
     else:
         return 'Underweight', IMAGE_PATHS['Underweight']
+        
 def bmi_calculate():
     a=agebox.get()
     h=float(heighttxt.get())
@@ -44,7 +47,7 @@ def bmi_calculate():
         new_entry=[a, h, w, round(w /h ** 2,1), bmi_result]
         load_existing_entries(new_entry)
 
-def load_existing_entries(new_entry):
+def load_existing_entries(new_entry): #Check if 'bmi.csv' exists
     try:
         with open('bmi.csv', 'a', newline='') as csvfile:
             csvwrite = csv.writer(csvfile)
@@ -82,33 +85,34 @@ if __name__ == '__main__':
     frame=tkinter.Frame(window)
     frame.pack()
 
+#Info frame
     userinfoframe=tkinter.LabelFrame(frame)
     userinfoframe.grid(row=0, column=0, sticky='news')
 
     agelabel=tkinter.Label(userinfoframe,text='Age: ')
     agelabel.grid(row=0,column=0)
-
     agebox=tkinter.Spinbox(userinfoframe,from_='1', to='150')
     agebox.grid(row=1,column=0,padx=10)
 
     heightlabel=tkinter.Label(userinfoframe,text='Height (m): ')
     heightlabel.grid(row=2,column=0)
-
     heighttxt=tkinter.Entry(userinfoframe)
     heighttxt.grid(row=3,column=0)
 
     weightlabel=tkinter.Label(userinfoframe,text='Weight (kg): ')
     weightlabel.grid(row=4,column=0,padx=10)
-
     weighttxt=tkinter.Entry(userinfoframe)
     weighttxt.grid(row=5,column=0)
 
+#Calculation button
     cal_button = tkinter.Button(frame, text= 'BMI Calculate', command=bmi_calculate,height='1')
     cal_button.grid(row=6,column=0,padx=10, pady=5)
 
+#Chart button
     demo_button = tkinter.Button(frame, text= 'Show Demographic',command=data_visual, height='1')
     demo_button.grid(row=7,column=0,padx=10, pady=5)
 
+#Result frame
     resultinfoframe=tkinter.LabelFrame(frame)
     resultinfoframe.grid(row=8, column=0, sticky='news')
 
