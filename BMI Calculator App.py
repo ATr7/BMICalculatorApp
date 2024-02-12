@@ -13,10 +13,10 @@ BMI_CATEGORIES = {
 
 #icons
 IMAGE_PATHS = {
-    'Obesity': '...filepath//warning.png',
+    'Obesity': '...filepath/warning.png',
     'Overweight': '...filepath/warning-2.png',
-    'Normal': '...filepath//checked.png',
-    'Underweight': '...filepath//warning-2.png'
+    'Normal': '...filepath/checked.png',
+    'Underweight': '...filepath/warning-2.png'
 }
 
 def bmi_calculation(h,w):
